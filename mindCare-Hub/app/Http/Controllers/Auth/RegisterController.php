@@ -1,0 +1,70 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use App\Models\User;
+use App\Models\Counselor;
+
+class RegisterController extends Controller
+{
+    public function showRegistrationForm()
+    {
+        return view('auth.register');
+    }
+
+    public function register(Request $request)
+    {
+        $role = $request->input('role');
+
+        $rules = [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email|unique:counselors,email',
+            'password' => 'required|string|confirmed|min:8',
+        ];
+
+        if ($role === 'counselor') {
+
+            $rules = array_merge($rules, [
+                'specialization' => 'nullable|string|max:255',
+                'experience' => 'nullable|integer|min:0',
+                'qualifications' => 'nullable|string|max:255',
+                'consultation_fee' => 'nullable|numeric|min:0',
+                'bio' => 'nullable|string',
+                'location' => 'nullable|string|max:255',
+                'languages' => 'nullable|string|max:255',
+            ]);
+        }
+
+        $validated = $request->validate($rules);
+
+        if ($role === 'counselor') {
+
+            Counselor::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => Hash::make($validated['password']),
+                'specialization' => $validated['specialization'] ?? null,
+                'experience' => $validated['experience'] ?? null,
+                'qualifications' => $validated['qualifications'] ?? null,
+                'consultation_fee' => $validated['consultation_fee'] ?? null,
+                'bio' => $validated['bio'] ?? null,
+                'location' => $validated['location'] ?? null,
+                'languages' => $validated['languages'] ?? null,
+            ]);
+        } else {
+
+            User::create([
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => Hash::make($validated['password']),
+                'package_id' => 1,
+            ]);
+        }
+
+        return redirect()->route('login')->with('success', 'Registration successful! Please log in.');
+    }
+}
