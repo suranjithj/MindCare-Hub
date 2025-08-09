@@ -10,7 +10,7 @@ app = Flask(__name__)
 model = joblib.load("logistic_regression_emotion_model.pkl", mmap_mode='r')
 
 # Gemini API Key
-GEMINI_API_KEY = "AIzaSyDVBP9twt6P3Gfk7VSg8oMQXKTinBKkq0s"
+GEMINI_API_KEY = "_ _"
 genai.configure(api_key=GEMINI_API_KEY)
 
 def get_songs_from_gemini(emotion):
