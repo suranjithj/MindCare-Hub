@@ -37,6 +37,13 @@
             <a href="{{ route('admin.blogs.index') }}" class="block px-4 py-2 rounded hover:bg-blue-100 hover:text-blue-700 {{ request()->routeIs('admin.blogs.*') ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-700' }}">
                 Blogs
             </a>
+            <a href="{{ route('admin.emails.index') }}" class="block px-4 py-2 rounded hover:bg-blue-100 hover:text-blue-700 {{ request()->routeIs('admin.emails.*') ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-700' }}">
+                Emails
+            </a>
+
+            <a href="{{ route('home') }}" class="block px-4 py-2 rounded hover:bg-blue-100 hover:text-blue-700 {{ request()->routeIs('home') ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-700' }}">
+                Home
+            </a>
 
             <form method="POST" action="{{ route('admin.logout') }}" class="mt-auto px-4">
                 @csrf

@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Models\Counselor;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegistrationMail;
+
 class RegisterController extends Controller
 {
     public function showRegistrationForm()
@@ -27,7 +30,6 @@ class RegisterController extends Controller
         ];
 
         if ($role === 'counselor') {
-
             $rules = array_merge($rules, [
                 'specialization' => 'nullable|string|max:255',
                 'experience' => 'nullable|integer|min:0',
@@ -42,8 +44,7 @@ class RegisterController extends Controller
         $validated = $request->validate($rules);
 
         if ($role === 'counselor') {
-
-            Counselor::create([
+            $counselor = Counselor::create([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
                 'password' => Hash::make($validated['password']),
@@ -55,16 +56,26 @@ class RegisterController extends Controller
                 'location' => $validated['location'] ?? null,
                 'languages' => $validated['languages'] ?? null,
             ]);
-        } else {
 
-            User::create([
+            $this->sendRegistrationEmail($counselor, 'counselor');
+
+        } else {
+            $user = User::create([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
                 'password' => Hash::make($validated['password']),
                 'package_id' => 1,
             ]);
+
+            $this->sendRegistrationEmail($user, 'user');
         }
 
         return redirect()->route('login')->with('success', 'Registration successful! Please log in.');
     }
+
+    protected function sendRegistrationEmail($user, $role)
+    {
+        Mail::to($user->email)->send(new RegistrationMail($user, $role));
+    }
+
 }

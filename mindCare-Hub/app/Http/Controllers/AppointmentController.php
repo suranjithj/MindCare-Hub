@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Session;
+use App\Notifications\AppointmentNotification;
+
+use Illuminate\Support\Facades\Mail;
+use App\Mail\AppointmentMail;
 
 class AppointmentController extends Controller
 {
@@ -73,6 +77,11 @@ class AppointmentController extends Controller
 
 
             if ($appointment->save()) {
+
+                Mail::to($appointment->user_email)
+                    ->cc($counselor->email)
+                    ->send(new AppointmentMail($appointment, 'scheduled'));
+
                 return redirect()->route('payments.page', $appointment->id)
                                  ->with('success', 'Appointment requested successfully! Proceed to payment.');
             } else {
@@ -105,6 +114,10 @@ class AppointmentController extends Controller
             'status' => $request->status,
         ]);
 
+        Mail::to($appointment->user_email)
+            ->cc($appointment->counselor->email)
+            ->send(new AppointmentMail($appointment, $appointment->status));
+
         return back()->with('success', 'Appointment status updated successfully.');
     }
 
@@ -117,7 +130,6 @@ class AppointmentController extends Controller
                                 ->orderBy('appointment_time', 'desc')
                                 ->paginate(10);
 
-        // return view
         return view('user.appointments.index', compact('appointments'));
     }
 
@@ -153,6 +165,10 @@ class AppointmentController extends Controller
 
         $appointment->status = 'cancelled';
         $appointment->save();
+
+        Mail::to($appointment->user_email)
+            ->cc($appointment->counselor->email)
+            ->send(new AppointmentMail($appointment, 'cancelled'));
 
         return redirect()->route('user.appointments.index')->with('success', 'Appointment cancelled successfully.');
     }

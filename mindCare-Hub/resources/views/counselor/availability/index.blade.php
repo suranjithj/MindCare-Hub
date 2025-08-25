@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-3xl mx-auto bg-white p-6 rounded shadow mt-16 mb-16">
+<div class="max-w-3xl mx-auto bg-white p-6 rounded shadow mt-36 mb-16">
     <h1 class="text-2xl font-bold mb-6">Manage Availability</h1>
 
     @if(session('success'))

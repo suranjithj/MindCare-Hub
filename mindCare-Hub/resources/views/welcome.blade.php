@@ -152,9 +152,7 @@
     </div>
 </section>
 
-<section
-    class="text-center px-4 sm:px-6 md:px-16 lg:px-32 pb-24 py-16 bg-gray-200"
->
+<section class="text-center px-4 sm:px-6 md:px-16 lg:px-32 pb-24 py-16 bg-gray-200">
     <div
     class="bg-blue-500 text-white rounded-2xl py-10 px-6 sm:py-12 sm:px-10 md:py-12 md:px-12 w-full"
     style="box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.373);"
@@ -170,6 +168,38 @@
             class="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-gray-100 transition text-base sm:text-lg inline-block"
             >Get Started</a
         >
+        <br><br>
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 leading-tight">
+            Subscribe Our Newsletter ...
+        </h2>
+        <form action="{{ route('subscribe.store') }}" method="POST">
+            @csrf
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter your email address"
+                class="w-full max-w-md px-6 py-3 rounded-lg border border-gray-300 text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+            />
+            <button
+                type="submit"
+                class="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-gray-100 hover:text-blue-900 transition text-base sm:text-lg inline-block"
+            >
+                Subscribe
+            </button>
+        </form>
+
+        @if(session('success'))
+            <div class="mt-4 text-red-300 font-semibold">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @error('email')
+            <div class="mt-2 text-red-600 text-sm">
+                {{ $message }}
+            </div>
+        @enderror
     </div>
 </section>
 

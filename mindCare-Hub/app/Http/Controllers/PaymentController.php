@@ -107,4 +107,11 @@ class PaymentController extends Controller
         }
     }
 
+    public function update($appointmentId)
+    {
+        $appointment = Appointment::findOrFail($appointmentId);
+
+        return view('payments.page', compact('appointment'));
+    }
+
 }

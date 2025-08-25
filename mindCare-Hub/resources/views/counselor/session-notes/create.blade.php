@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-xl mx-auto bg-white p-6 rounded shadow mt-16 mb-16">
+<div class="max-w-xl mx-auto bg-white p-6 rounded shadow mt-36 mb-16">
     <h2 class="text-xl font-bold mb-4">{{ isset($note) ? 'Edit' : 'New' }} Session Note</h2>
 
     <form action="{{ isset($note) ? route('session-notes.update', $note->id) : route('session-notes.store') }}" method="POST">

@@ -3,7 +3,7 @@
 @section('title', 'Mood Tracker')
 
 @section('content')
-<div class="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-md rounded mb-16">
+<div class="max-w-3xl mx-auto mt-36 p-6 bg-white shadow-md rounded mb-16">
     <h2 class="text-2xl font-semibold mb-4">Mood Tracker</h2>
 
     @if(session('success'))
