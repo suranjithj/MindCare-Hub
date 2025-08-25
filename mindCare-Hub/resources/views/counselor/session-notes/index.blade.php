@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-5xl mx-auto bg-white p-6 rounded shadow mt-16 mb-16">
+<div class="max-w-5xl mx-auto bg-white p-6 rounded shadow mt-36 mb-16">
     <h2 class="text-2xl font-bold mb-6">Session Notes</h2>
 
     <a href="{{ route('session-notes.create') }}"
