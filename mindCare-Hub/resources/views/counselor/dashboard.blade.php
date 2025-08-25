@@ -3,7 +3,7 @@
 @section('title', 'Counselor Dashboard')
 
 @section('content')
-<div class="min-h-screen flex bg-gray-100">
+<div class="min-h-screen mt-20 flex bg-gray-100">
     <!-- Sidebar -->
     <aside class="w-64 bg-white shadow-md">
         <div class="p-6 bg-green-700 text-white text-xl font-bold">
@@ -15,6 +15,9 @@
                     <a href="#profile" class="block px-4 py-2 rounded hover:bg-green-100">Profile</a>
                 </li>
                 <li>
+                    <a href="#availability" class="block px-4 py-2 rounded hover:bg-green-100">Schedule Availability</a>
+                </li>
+                <li>
                     <a href="#appointments" class="block px-4 py-2 rounded hover:bg-green-100">Manage Appointments</a>
                 </li>
                 <li>
@@ -23,12 +26,10 @@
                 <li>
                     <a href="#session-notes" class="block px-4 py-2 rounded hover:bg-green-100">Session Notes</a>
                 </li>
-                <li>
-                    <a href="#availability" class="block px-4 py-2 rounded hover:bg-green-100">Schedule Availability</a>
-                </li>
-                <li>
+
+                {{-- <li>
                     <a href="#packages" class="block px-4 py-2 rounded hover:bg-green-100">Package Details</a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{ route('logout') }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"

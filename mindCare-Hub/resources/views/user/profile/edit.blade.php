@@ -3,7 +3,7 @@
 @section('title', 'Edit Profile')
 
 @section('content')
-    <div class="max-w-2xl mx-auto p-6 bg-white mt-10 rounded shadow mb-16">
+    <div class="max-w-2xl mx-auto p-6 bg-white mt-36 rounded shadow mb-16">
         <h2 class="text-2xl font-semibold mb-6">Edit Profile</h2>
 
         @if(session('success'))

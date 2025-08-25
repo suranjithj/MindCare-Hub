@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-7xl mx-auto mt-10 mb-20 px-4">
+<div class="max-w-7xl mx-auto mt-36 mb-36 px-4">
     <h2 class="text-3xl font-extrabold mb-8 text-gray-800">Manage Appointments</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

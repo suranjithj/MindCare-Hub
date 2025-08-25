@@ -3,7 +3,7 @@
 @section('title', 'User Dashboard')
 
 @section('content')
-<div class="min-h-screen flex bg-gray-100">
+<div class="min-h-screen mt-20 flex bg-gray-100">
     <!-- Sidebar -->
     <aside class="w-64 bg-white shadow-md">
         <div class="p-6 bg-blue-600 text-white text-xl font-bold">

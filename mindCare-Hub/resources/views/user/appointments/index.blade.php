@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-6xl mx-auto mt-10 mb-20 px-4">
+<div class="max-w-6xl mx-auto mt-36 mb-20 px-4">
     <h2 class="text-3xl font-extrabold mb-6 text-gray-800 pb-2">Manage Appointments</h2>
 
     <div class="overflow-x-auto bg-white rounded-lg shadow">
@@ -31,7 +31,19 @@
                             {{ ucfirst($appointment->status) }}
                         </span>
                     </td>
-                    <td class="px-6 py-4 text-sm border text-gray-800">{{ $appointment->payment_status }}</td>
+
+                    <td class="px-6 py-4 text-sm border text-gray-800">
+                        @if($appointment->payment_status === 'pending')
+                        <div class="flex flex-col space-y-2">
+                            <span>{{ $appointment->payment_status }}</span>
+                            <a href="{{ route('payments.page', $appointment->id) }}" class="px-4 py-2 w-3/4 bg-blue-600 hover:bg-blue-700 text-white hover:text-white rounded">Pay Now</a>
+
+                        </div>
+                        @else
+                            {{ ucfirst($appointment->payment_status) }}
+                        @endif
+                    </td>
+
                     <td class="px-6 py-4 text-sm border">
                         @if(in_array($appointment->status, ['pending', 'confirmed']))
                         <form action="{{ route('appointments.userCancel', $appointment->id) }}" method="POST"

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section id="clients" class="max-w-6xl mx-auto mt-10 mb-20 px-4">
+<section id="clients" class="max-w-6xl mx-auto mt-36 mb-20 px-4">
     <h1 class="text-3xl font-extrabold mb-6 text-gray-800 pb-2">Your Clients</h1>
     <p class="text-gray-700 mb-4">List of clients assigned to you with appointment statistics.</p>
 
