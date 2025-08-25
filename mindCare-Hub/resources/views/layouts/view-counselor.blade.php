@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-4xl mx-auto mt-16 mb-16 bg-white p-8 rounded-2xl shadow-lg border border-gray-200 transition duration-300 hover:shadow-2xl ">
+<div class="max-w-4xl mx-auto mt-36 mb-16 bg-white p-8 rounded-2xl shadow-lg border border-gray-200 transition duration-300 hover:shadow-2xl ">
     <h2 class="text-4xl font-extrabold text-blue-600 mb-6 border-b pb-2">{{ $counselor->name }}</h2>
 
     <div class="space-y-4 text-gray-700 text-lg">

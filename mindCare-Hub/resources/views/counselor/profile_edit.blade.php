@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-3xl mx-auto p-6 bg-white rounded shadow mt-16 mb-16">
+<div class="max-w-3xl mx-auto p-6 bg-white rounded shadow mt-36 mb-16">
 
     <h2 class="text-2xl font-semibold mb-6">Edit Profile</h2>
 

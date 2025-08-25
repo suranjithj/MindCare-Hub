@@ -26,9 +26,9 @@
         <div class="min-h-screen bg-white" data-scroll-section>
 
             <div >
-                @yield('content')
-            </div>
 
+            </div>
+            @yield('content')
             <!-- Page Heading -->
             @isset($header)
                 <header class="bg-white shadow">
@@ -40,20 +40,23 @@
 
             <!-- Page Content -->
             @include('layouts.footer')
-            <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-                {{-- ChatBot --}}
-            <script src="https://bot.orimon.ai/deploy/index.js" tenantId="c0cfa52f-982b-476f-bc38-8741dd1248ab"></script>
+        </div>
 
-            {{-- scroll --}}
-            <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
-            <script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+        {{-- ChatBot --}}
+        <script src="https://bot.orimon.ai/deploy/index.js" tenantId="c0cfa52f-982b-476f-bc38-8741dd1248ab"></script>
+
+        {{-- scroll --}}
+        <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+        <script>
             const scroll = new LocomotiveScroll({
                 el: document.querySelector('[data-scroll-container]'),
                 smooth: true
             });
-            </script>
+        </script>
 
-        </div>
     </body>
 </html>

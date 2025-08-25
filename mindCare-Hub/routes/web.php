@@ -32,6 +32,11 @@ use App\Http\Controllers\Admin\CounselorController;
 use App\Http\Controllers\Admin\UserControllerAD;
 use App\Http\Controllers\Admin\BlogController;
 
+// Email
+use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\SubscriberController;
+
 // Authentication Routes
 Route::prefix('auth')->group(function() {
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -131,6 +136,10 @@ Route::middleware('auth:web')->prefix('admin')->group(function () {
     // Appointments
     Route::get('/appointments', [AppointmentController::class, 'adminIndex'])->name('admin.appointments.index');
 
+    // Emails
+    Route::get('emails', [App\Http\Controllers\EmailController::class, 'indexSubscribers'])->name('admin.emails.index');
+    Route::post('emails/send', [App\Http\Controllers\EmailController::class, 'sendBatchEmails'])->name('admin.emails.send');
+
     // Blog
     Route::resource('blogs', BlogController::class)->names([
         'index'   => 'admin.blogs.index',
@@ -164,7 +173,11 @@ Route::middleware('auth:web')->prefix('user')->group(function () {
     Route::get('/appointments', [\App\Http\Controllers\AppointmentController::class, 'index'])->name('user.appointments.index');
 });
 
+// user: manage appointments
 Route::post('/appointments/{id}/cancel', [AppointmentController::class, 'userCancel'])->name('appointments.userCancel');
+
+Route::get('/payments/{appointment}', [PaymentController::class, 'update'])->name('payments.page');
+
 
 // end user
 
@@ -247,3 +260,7 @@ Route::middleware(['auth:counselor'])->group(function () {
     Route::get('/counselor/availability', [CounselorAvailabilityController::class, 'index'])->name('counselor.availability.index');
 
 });
+
+
+// Email Subscribe
+Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe.store');
