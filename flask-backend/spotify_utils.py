@@ -2,8 +2,8 @@ import requests
 import base64
 import os
 
-SPOTIFY_CLIENT_ID = "_ _"
-SPOTIFY_CLIENT_SECRET = "_ _"
+SPOTIFY_CLIENT_ID = " "
+SPOTIFY_CLIENT_SECRET = " "
 
 def get_spotify_token():
     auth_str = f"{SPOTIFY_CLIENT_ID}:{SPOTIFY_CLIENT_SECRET}"
