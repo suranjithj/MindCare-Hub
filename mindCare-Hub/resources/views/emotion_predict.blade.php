@@ -38,7 +38,9 @@
             @if(isset($emotion))
                 <div class="mt-6 p-4 bg-gray-900 rounded-md">
                     <p class="text-gray-100"><strong>Predicted Emotion:</strong> {{ $emotion }}</p>
-                    <p class="text-gray-100"><strong>Genre:</strong> {{ $genre }}</p>
+                    <p class="text-gray-100">
+                        <strong>Genre:</strong> {{ is_array($genre) ? implode(', ', $genre) : $genre }}
+                    </p>
 
                     <h4 class="mt-2 mb-3 font-semibold text-gray-100">Recommended Songs:</h4>
                     <ul class="list-disc list-inside">
