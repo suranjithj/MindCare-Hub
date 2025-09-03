@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Counselor;
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\RegistrationMail;
+
 class CounselorController extends Controller
 {
     // List all counselors

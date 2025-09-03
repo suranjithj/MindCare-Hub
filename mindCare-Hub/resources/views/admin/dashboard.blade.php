@@ -28,7 +28,7 @@
             <a href="{{ route('users.index') }}" class="block px-4 py-2 rounded hover:bg-blue-100 hover:text-blue-700 {{ request()->routeIs('users.*') ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-700' }}">
                 Users
             </a>
-            <a href="{{ route('counselors.index') }}" class="block px-4 py-2 rounded hover:bg-blue-100 hover:text-blue-700 {{ request()->routeIs('counselors.*') ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-700' }}">
+            <a href="{{ route('admin.counselors.index') }}" class="block px-4 py-2 rounded hover:bg-blue-100 hover:text-blue-700 {{ request()->routeIs('admin.counselors.*') ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-700' }}">
                 Counselors
             </a>
             <a href="{{ route('admin.appointments.index') }}" class="block px-4 py-2 rounded hover:bg-blue-100 hover:text-blue-700 {{ request()->routeIs('admin.appointments.*') ? 'bg-blue-100 text-blue-700 font-semibold' : 'text-gray-700' }}">

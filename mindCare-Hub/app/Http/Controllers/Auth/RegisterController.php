@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use App\Models\Counselor;
-
 use Illuminate\Support\Facades\Mail;
 use App\Mail\RegistrationMail;
 
@@ -21,13 +20,16 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $role = $request->input('role');
-
+        // Add 'role' to the base rules
         $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email|unique:counselors,email',
             'password' => 'required|string|confirmed|min:8',
+            'role' => 'required|in:user,counselor', // Add this rule
         ];
+
+        // The input() method is safe to use here
+        $role = $request->input('role');
 
         if ($role === 'counselor') {
             $rules = array_merge($rules, [
@@ -41,9 +43,10 @@ class RegisterController extends Controller
             ]);
         }
 
+        // Now validate all fields, including 'role'
         $validated = $request->validate($rules);
 
-        if ($role === 'counselor') {
+        if ($validated['role'] === 'counselor') {
             $counselor = Counselor::create([
                 'name' => $validated['name'],
                 'email' => $validated['email'],
@@ -71,11 +74,14 @@ class RegisterController extends Controller
         }
 
         return redirect()->route('login')->with('success', 'Registration successful! Please log in.');
+        return response()->json([
+            'message' => 'User registered successfully',
+            'user' => $user
+        ], 201);
     }
 
     protected function sendRegistrationEmail($user, $role)
     {
         Mail::to($user->email)->send(new RegistrationMail($user, $role));
     }
-
 }

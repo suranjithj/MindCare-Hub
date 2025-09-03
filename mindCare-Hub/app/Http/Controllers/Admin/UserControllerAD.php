@@ -10,7 +10,7 @@ class UserControllerAD extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::where('email', '!=', 'admin@mindcare.com')->get();
         return view('admin.users.index', compact('users'));
     }
 

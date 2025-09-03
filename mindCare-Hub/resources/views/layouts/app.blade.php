@@ -23,11 +23,8 @@
 
         @include('layouts.navigation')
 
-        <div class="min-h-screen bg-white" data-scroll-section>
+        <main class="min-h-screen bg-white" data-scroll-section>
 
-            <div >
-
-            </div>
             @yield('content')
             <!-- Page Heading -->
             @isset($header)
@@ -41,15 +38,20 @@
             <!-- Page Content -->
             @include('layouts.footer')
 
-        </div>
-
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        </main>
 
         {{-- ChatBot --}}
-        <script src="https://bot.orimon.ai/deploy/index.js" tenantId="c0cfa52f-982b-476f-bc38-8741dd1248ab"></script>
+        <iframe
+            src="https://bot.orimon.ai/?tenantId=d34843a4-a520-41ac-888f-03741b99db77&fullScreenBot=true"
+            frameBorder="0"
+            class="fixed right-5 z-50 w-20 h-20 rounded-full shadow-lg">
+        </iframe>
+        <script src="https://bot.orimon.ai/deploy/index.js" tenantId="d34843a4-a520-41ac-888f-03741b99db77"></script>
 
         {{-- scroll --}}
         <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
         <script>
             const scroll = new LocomotiveScroll({
