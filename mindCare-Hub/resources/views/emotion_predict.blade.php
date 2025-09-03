@@ -26,7 +26,9 @@
                 name="text"
                 rows="8"
                 placeholder="Enter your thoughts"
-                class="w-full p-3 border bg-gray-300 text-gray-900 border-gray-300 rounded-md resize-none focus:outline-none focus:ring-1 focus:ring-blue-300">{{ old('text') }}</textarea>
+                class="w-full p-3 border bg-gray-300 text-gray-900 border-gray-300 rounded-md resize-none focus:outline-none focus:ring-1 focus:ring-blue-300">
+                {{ old('text') }}
+                </textarea>
 
                 <button
                 type="submit"

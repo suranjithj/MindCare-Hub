@@ -11,11 +11,8 @@
     ></div>
 
     <div class="relative z-10 max-w-4xl w-full px-4">
-        <h1
-            class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight"
-        >
-            Welcome to MindCare Hub
-        </h1>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-gray-900 leading-tight">Welcome to MindCare Hub</h1>
+
         <p class="text-base sm:text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-900 leading-relaxed">
             Your AI-powered wellness portal for mood tracking, counseling, and personalized song recommendations.
         </p>
@@ -25,15 +22,14 @@
             style="box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.373);"
             class="wellness-feature-container bg-white rounded-2xl shadow-lg p-5 sm:p-6 md:p-8 w-full max-w-xl mx-auto mt-12 text-center"
         >
-            <h2
-                class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-4"
-            >
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                 🌿 Daily Dose of Wellness
             </h2>
 
             <button
                 id="getWellnessTipButton"
-                class="wellness-button bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-semibold py-2 px-6 rounded-full shadow-md transition duration-300 ease-in-out sm:py-2 sm:px-6 sm:text-base md:py-3 md:px-8 md:text-lg"
+                class="wellness-button bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 text-white font-semibold py-2 px-6
+                        rounded-full shadow-md transition duration-300 ease-in-out sm:py-2 sm:px-6 sm:text-base md:py-3 md:px-8 md:text-lg"
             >
                 ✨ Get Daily Wellness Tip
             </button>
@@ -98,39 +94,36 @@
 </script>
 
 <section class="px-4 sm:px-6 md:px-16 lg:px-32 pb-16 bg-gray-400 py-16">
-    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-white">
-        Our Features
-    </h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+    <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12 text-white">Our Features</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 text-justify gap-6 sm:gap-8">
         @foreach ([
             [
                 'title' => 'Mood Prediction',
-                'desc' => 'Analyze your current emotional state using our advanced AI-powered mood detection system. Simply enter a short text or message, and receive accurate insights into your mood along with personalized music or wellness suggestions tailored just for you.',
+                'desc' => 'Analyze your current emotional state using our advanced AI-powered mood detection system. Simply enter a short text or message,
+                            and receive accurate insights into your mood along with personalized music or wellness suggestions tailored just for you.',
             ],
             [
                 'title' => 'Song Recommendations',
-                'desc' => 'Discover songs that perfectly match your mood and emotional state. Our smart AI recommends music tailored to uplift, relax, or resonate with how you feel making every listening experience more personal and meaningful.',
+                'desc' => 'Discover songs that perfectly match your mood and emotional state. Our smart AI recommends music tailored to uplift, relax,
+                            or resonate with how you feel making every listening experience more personal and meaningful.',
             ],
             [
                 'title' => 'Counselor Booking',
-                'desc' => 'Easily schedule one-on-one sessions with certified counselors through our platform. Whether you are seeking emotional support, mental wellness guidance, or professional advice, connect with the right expert at your convenience.',
+                'desc' => 'Easily schedule one-on-one sessions with certified counselors through our platform. Whether you are seeking emotional support,
+                            mental wellness guidance, or professional advice, connect with the right expert at your convenience.',
             ]
         ] as $feature)
             <div
                 class="bg-gray-700 p-5 rounded-2xl shadow-md hover:shadow-lg transition duration-300"
                 style="box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.373);"
             >
-                <h3 class="text-lg sm:text-xl text-gray-200 font-bold mb-2">
-                    {{ $feature['title'] }}
-                </h3>
-                <p class="text-white text-sm sm:text-base">{{ $feature['desc'] }}</p>
+                <h3 class="text-lg sm:text-xl text-gray-200 font-bold mb-2"> {{ $feature['title'] }} </h3>
+                <p class="text-white text-sm sm:text-base"> {{ $feature['desc'] }} </p>
             </div>
         @endforeach
     </div>
 
-    <h2 class="text-2xl sm:text-3xl font-bold text-center mt-16 mb-12 text-white">
-        What Our Users Say
-    </h2>
+    <h2 class="text-2xl sm:text-3xl font-bold text-center mt-16 mb-12 text-white">What Our Users Say</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
         @foreach ([
             ['text' => 'MindCare Hub helped me find peace through music and counseling.', 'author' => 'Jane Doe'],
@@ -141,12 +134,8 @@
                 class="bg-gray-700 p-5 rounded-2xl shadow-md"
                 style="box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.373);"
             >
-                <p class="text-gray-200 mb-4 text-sm sm:text-base">
-                    "{{ $testimonial['text'] }}"
-                </p>
-                <p class="font-semibold text-white text-sm sm:text-base">
-                    {{ $testimonial['author'] }}
-                </p>
+                <p class="text-gray-200 mb-4 text-sm sm:text-base"> "{{ $testimonial['text'] }}" </p>
+                <p class="font-semibold text-white text-sm sm:text-base"> {{ $testimonial['author'] }} </p>
             </div>
         @endforeach
     </div>
@@ -157,21 +146,15 @@
     class="bg-blue-500 text-white rounded-2xl py-10 px-6 sm:py-12 sm:px-10 md:py-12 md:px-12 w-full"
     style="box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.373);"
     >
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4 leading-tight">
-            Start Your Wellness Journey Today
-        </h2>
-        <p class="text-base sm:text-lg mb-6 leading-relaxed">
-            Join MindCare Hub and take control of your mental well-being.
-        </p>
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 leading-tight"> Start Your Wellness Journey Today </h2>
+        <p class="text-base sm:text-lg mb-6 leading-relaxed"> Join MindCare Hub and take control of your mental well-being. </p>
         <a
             href="{{ route('register') }}"
             class="bg-white text-blue-600 font-semibold px-6 py-3 rounded-xl hover:bg-gray-100 transition text-base sm:text-lg inline-block"
             >Get Started</a
         >
         <br><br>
-        <h2 class="text-2xl sm:text-3xl font-bold mb-4 leading-tight">
-            Subscribe Our Newsletter ...
-        </h2>
+        <h2 class="text-2xl sm:text-3xl font-bold mb-4 leading-tight"> Subscribe Our Newsletter ... </h2>
         <form action="{{ route('subscribe.store') }}" method="POST">
             @csrf
             <input
@@ -190,15 +173,11 @@
         </form>
 
         @if(session('success'))
-            <div class="mt-4 text-red-300 font-semibold">
-                {{ session('success') }}
-            </div>
+            <div class="mt-4 text-red-300 font-semibold"> {{ session('success') }} </div>
         @endif
 
         @error('email')
-            <div class="mt-2 text-red-600 text-sm">
-                {{ $message }}
-            </div>
+            <div class="mt-2 text-red-600 text-sm"> {{ $message }} </div>
         @enderror
     </div>
 </section>
