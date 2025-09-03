@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="text-sm">
-                    <a href="{{ route('password.request') }}" class="text-white hover:underline hover:text-blue-500">{{ __('Forgot your password?') }}</a>
+                    <a href="{{ route('auth.reset-password') }}" class="text-white hover:underline hover:text-blue-500">{{ __('Forgot your password?') }}</a>
                 </div>
             </div>
 

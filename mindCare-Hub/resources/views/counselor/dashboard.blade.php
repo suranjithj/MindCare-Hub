@@ -63,7 +63,7 @@
         <section id="availability" class="mb-10 bg-white p-6 rounded shadow">
             <h2 class="text-xl font-semibold mb-4">Schedule Availability</h2>
             <p>Set or update your available times for bookings.</p>
-            <a href="{{ route('counselor.availability') }}"
+            <a href="{{ route('counselor.availability.index') }}"
                 class="mt-4 inline-block bg-purple-600 hover:bg-purple-700 text-white hover:text-white px-4 py-2 rounded">
                 Manage Availability
             </a>

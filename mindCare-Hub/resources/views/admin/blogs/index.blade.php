@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mx-auto py-4">
     <div class="flex justify-between items-center mb-4">
-        <h2 class="text-2xl font-bold mb-6">All Blog Articles</h2>
+        <h2 class="text-2xl font-bold mb-6">Manage Blogs</h2>
         <a href="{{ route('admin.blogs.create') }}" class="px-4 py-2 text-white bg-blue-700 rounded hover:text-white hover:bg-blue-600">+ New Blog</a>
     </div>
 
