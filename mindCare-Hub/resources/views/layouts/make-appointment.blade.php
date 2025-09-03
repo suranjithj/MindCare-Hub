@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md mb-16 mt-16">
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md mb-16 mt-36">
     <h2 class="text-2xl font-semibold text-gray-800 mb-6">Make Appointment with {{ $counselor->name }}</h2>
 
     {{-- Display Success Message --}}

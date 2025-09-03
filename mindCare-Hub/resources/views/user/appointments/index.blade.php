@@ -19,7 +19,7 @@
             <tbody class="divide-y divide-gray-200">
                 @foreach($appointments as $appointment)
                 <tr>
-                    <td class="px-6 py-4 text-sm border text-gray-800">{{ $appointment->counselor->name }}</td>
+                    <td class="px-6 py-4 text-sm border text-gray-800">{{ optional($appointment->counselor)->name ?? 'Counselor Removed' }}</td>
                     <td class="px-6 py-4 text-sm border text-gray-800">{{ \Carbon\Carbon::parse($appointment->appointment_date)->format('M d, Y') }}</td>
                     <td class="px-6 py-4 text-sm border text-gray-800">{{ \Carbon\Carbon::parse($appointment->appointment_time)->format('h:i A') }}</td>
                     <td class="px-6 py-4 text-sm border">

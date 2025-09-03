@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PasswordResetController;
+use App\Http\Controllers\auth\NewPasswordController;
+use App\Http\Controllers\auth\PasswordResetLinkController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MoodController;
 use App\Http\Controllers\EmotionController;
@@ -14,7 +16,7 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\PublicBlogController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\UserController;
-
+use Illuminate\Support\Facades\Password;
 use App\Models\Counselor;
 use App\Models\User;
 use App\Models\Appointment;
@@ -60,12 +62,25 @@ Route::prefix('auth')->group(function() {
     Route::post('/register', [RegisterController::class, 'register'])->name('register.post');
 
     // Password reset routes
-    Route::get('forgot-password', [PasswordResetController::class, 'request'])->name('password.request');
-    Route::post('forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])->name('password.email');
-    Route::get('reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
-    Route::post('reset-password', [PasswordResetController::class, 'reset'])->name('password.update');
+    // Route::get('forgot-password', [PasswordResetController::class, 'request'])->name('auth.reset-password');
+    // Route::post('forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])->name('password.email');
+    // Route::get('reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+    // Route::post('reset-password', [PasswordResetController::class, 'reset'])->name('password.update');
 
 });
+
+// Test
+// Register
+// use App\Http\Controllers\Testing\TestRegisterController;
+// Route::post('/test-register-counselor', [TestRegisterController::class, 'registerCounselor'])->name('register.post');
+
+// End tests
+
+// Show the password reset form
+Route::get('reset-password', [NewPasswordController::class, 'showResetForm'])->name('auth.reset-password');
+// Handle password update
+Route::post('reset-password', [NewPasswordController::class, 'reset'])->name('password.update');
+
 
 // Profile Routes
 Route::middleware('auth')->group(function() {
@@ -103,6 +118,7 @@ Route::get('/emotion-predict', function () {
 
 Route::post('/predict-emotion', [EmotionController::class, 'predictEmotion']);
 
+// Admin
 Route::middleware('auth:web')->prefix('admin')->group(function () {
 
     Route::get('/dashboard', function () {
@@ -125,7 +141,7 @@ Route::middleware('auth:web')->prefix('admin')->group(function () {
 
     // Manage Counselor
     Route::resource('counselors', CounselorController::class)->names([
-        'index'   => 'counselors.index',
+        'index'   => 'admin.counselors.index',
         'create'  => 'admin.counselors.create',
         'store'   => 'admin.counselors.store',
         'edit'    => 'admin.counselors.edit',
@@ -191,9 +207,6 @@ Route::middleware('auth:counselor')->prefix('counselor')->group(function () {
     Route::get('/counselor/profile/edit', [CounselorProfileController::class, 'edit'])->name('counselor.profile.edit');
     Route::post('/counselor/profile/update', [CounselorProfileController::class, 'update'])->name('counselor.profile.update');
 
-    Route::get('/counselor/appointments', [CounselorAppointmentController::class, 'index'])->name('counselor.appointments');
-    Route::get('/counselor/clients', [CounselorClientController::class, 'index'])->name('counselor.clients');
-    Route::get('/counselor/session-notes', [CounselorSessionNoteController::class, 'index'])->name('counselor.session-notes');
     Route::get('/counselor/availability', [CounselorAvailabilityController::class, 'index'])->name('counselor.availability');
     Route::post('/counselor/availability', [CounselorAvailabilityController::class, 'store'])->name('counselor.availability.store');
 
@@ -253,7 +266,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth:counselor'])->group(function () {
-    Route::get('/counselor/availability', [CounselorAvailabilityController::class, 'index'])->name('counselor.availability');
+    Route::get('/counselor/availability', [CounselorAvailabilityController::class, 'index'])->name('counselor.availability.index');
 
     Route::post('/counselor/availability', [CounselorAvailabilityController::class, 'store'])->name('counselor.availability.store');
 
